@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang = "cs">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0">
+        <title>Štěpán Orság</title>
+        <link rel = "stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href ="#home">
+                    <img src = "Loga/Logo.png" alt = "Logo Štěpán Orság" id = "logo">
+                </a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href = "#home">Home</a></li>
+                    <li><a href = "#about-me">About me</a></li>
+                    <li><a href = "#my-work">My Work</a></li>
+                </ul>
+        </nav>
+        </header>
+
+        <main>
+            <section id = "home">
+                <h2>Štěpán Orság</h2>
+                <p>Hello and welcome to my website!</p>
+                <div class = "arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 9L12 16L5 9" stroke="#FFD369" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <a href = "#about-me">Click or scroll down to learn more about me</a>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 9L12 16L5 9" stroke="#FFD369" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </section>
+
+            <section id = "about-me">
+                <div class = "article1">
+                    <h2>Something about me</h2>
+                    <p>So this is me, I am a 20 year old student from Czech republic. My bachelor’s degree is in aplicated informatics - software engineering. 
+                    <br><br>
+                    Through the year on university I’ve learned HTML and CSS, java, OOP, working with Github and many more. I would describe myself as a person you can count on.
+                    </p>
+                </div>
+                <div class = "article2">
+                    <h2>and something about my skills</h2>
+                    <p>❖ basics in c#</p>
+                    <p>❖ HTML and CSS</p>
+                    <p>❖ Java (swing, spring)</p>
+                    <p>❖ Github knowledge</p>
+                </div>
+            </section>
+
+            <section id = "my-work">
+                <a href="https://github.com/TVOJ-UCET/graficky-editor" target="_blank" class="project-card">
+                    <img src="Work/GraEdi.png" alt="Grafický vektorový editor" class="project-image">
+                     <div class="project-overlay">
+                        <h3>Grafický vektorový editor</h3>
+                    </div>
+                </a>
+
+                <a href="https://github.com/TVOJ-UCET/stag-rozvrh" target="_blank" class="project-card">
+                    <img src="Work/Rozvrh.png" alt="Rozvrh STAG" class="project-image">
+                    <div class="project-overlay">
+                        <h3>Stag schedule</h3>
+                    </div>
+                </a>
+
+                <a href="https://github.com/TVOJ-UCET/web-projekce" target="_blank" class="project-card">
+                    <img src="Work/Web.png" alt="Web pro Stavební Projekce s.r.o." class="project-image">
+                    <div class="project-overlay">
+                        <h3>Website for Stavební Projekce s.r.o.</h3>
+                    </div>
+                </a>
+
+            </section>
+        </main>
+        <footer>
+            <p>© 2025 Štěpán 0rság. All rights reserved.</p>
+        </footer>
+        <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+       
+        const observerOptions = {
+            root: null, 
+            rootMargin: '-80px 0px 0px 0px', 
+            threshold: 0.6 
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active-link');
+                    });
+
+                    const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active-link');
+                    }
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        const header = document.querySelector('header');
+
+        function handleScroll() {
+            if (window.scrollY > 10) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+    </script>
+    </body>
+</html>
