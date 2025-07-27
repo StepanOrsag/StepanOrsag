@@ -25,6 +25,7 @@ header{
     align-items: center;
     transition: background-color 0.4s ease, border-bottom 0.4s ease-in-out;
     height: 80px;
+    z-index: 10;
 }
 
 header a:hover{
@@ -122,11 +123,11 @@ section{
     flex-direction: row;
     justify-content:center;
     align-items: center;
-    gap: 200px;
+    gap: 160px;
 }
 
 #about-me .article1{
-    max-width: 600px;
+    max-width: 400px;
     background-color: #222831;
     border: 1px solid #FFD369;
     padding: 10px 25px;
@@ -134,7 +135,7 @@ section{
 }
 
 #about-me .article2{
-   max-width: 600px;
+   max-width: 400px;
     background-color: #222831;
     border: 1px solid #FFD369;
     padding: 10px 25px;
@@ -206,4 +207,58 @@ footer{
     color:#EEEEEE;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 800px) {
+
+    header {
+        flex-direction: column; 
+        height: auto; 
+        padding: 15px 1rem; 
+        justify-content: center; 
+        gap: 15px;
+    }
+
+    header h1 {
+        position: static; 
+        transform: none; 
+    }
+
+    #home h2 {
+        font-size: 2.5rem; 
+        padding: 10px 20px;
+    }
+
+    #home p {
+        font-size: 1.2rem; 
+    }
+    #home .arrow a {
+        font-size: 14px; 
+    }
+
+    #about-me {
+        flex-direction: column; 
+        justify-content: center;
+        gap: 30px; 
+    }
+
+    #about-me .article1, #about-me .article2 {
+        max-width: 90%; 
+        padding: 20px;
+    }
+
+    #my-work {
+        flex-direction: column; 
+        gap: 40px;
+    }
+    .project-card {
+        max-width: 90%; 
+    }
+    
+    section {
+        height: auto; 
+        min-height: 100vh; 
+        padding: 80px 1rem 40px 1rem; 
+    }
+
 }
